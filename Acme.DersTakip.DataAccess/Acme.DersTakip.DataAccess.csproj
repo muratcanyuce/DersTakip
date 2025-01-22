@@ -52,18 +52,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ITeacherDal.cs" />
-    <Compile Include="Abstract\ITeacherInstrumentDal.cs" />
     <Compile Include="Abstract\IInstrumentDal.cs" />
     <Compile Include="Abstract\IEntityRepository.cs" />
     <Compile Include="Abstract\IStudentDal.cs" />
     <Compile Include="Abstract\IScheduleDal.cs" />
     <Compile Include="Concrete\EntityFramework\DersTakipContext.cs" />
     <Compile Include="Concrete\EntityFramework\EfTeacherDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfTeacherInstrumentDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfInstrumentDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfStudentDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfScheduleDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfEntityRepositoryBase.cs" />
+    <Compile Include="Migrations\202501221356309_InitialMigration.cs" />
+    <Compile Include="Migrations\202501221356309_InitialMigration.Designer.cs">
+      <DependentUpon>202501221356309_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +78,11 @@
       <Project>{7F1B0FDD-76FB-4823-B5C3-84CF48D6B7CE}</Project>
       <Name>Acme.DersTakip.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202501221356309_InitialMigration.resx">
+      <DependentUpon>202501221356309_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -16,5 +16,6 @@ namespace Acme.DersTakip.Entity.Concrete
         public string ParentName { get; set; }
         public string ParentSurname { get; set; }
         public string ParentPhone { get; set; }
+        public ICollection<Schedule> Schedules { get; set; }
     }
 }

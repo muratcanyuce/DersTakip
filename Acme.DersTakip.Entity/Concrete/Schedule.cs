@@ -11,8 +11,11 @@ namespace Acme.DersTakip.Entity.Concrete
     {
         public int Id { get; set; }
         public int TeacherId { get; set; }
+        public Teacher Teacher { get; set; }
         public int StudentId { get; set; }
+        public Student Student { get; set; }
         public int InstrumentId { get; set; }
+        public Instrument Instrument { get; set; }
         public DateTime ScheduleDateTime { get; set; }
         public decimal Fee { get; set; }
         public string Description { get; set; }

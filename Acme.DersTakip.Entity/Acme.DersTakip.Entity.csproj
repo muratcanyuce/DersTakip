@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IEntity.cs" />
-    <Compile Include="Concrete\TeacherInstrument.cs" />
     <Compile Include="Concrete\Teacher.cs" />
     <Compile Include="Concrete\Instrument.cs" />
     <Compile Include="Concrete\Student.cs" />

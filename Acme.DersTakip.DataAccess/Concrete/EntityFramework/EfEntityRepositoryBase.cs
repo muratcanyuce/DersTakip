@@ -10,7 +10,7 @@ using Acme.DersTakip.Entity.Abstract;
 
 namespace Acme.DersTakip.DataAccess.Concrete.EntityFramework
 {
-    public class EfEntityRepositoryBase<TEntity, TContext> : DersTakipContext, IEntityRepository<TEntity>
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {

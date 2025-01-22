@@ -9,7 +9,15 @@ namespace Acme.DersTakip.Entity.Concrete
 {
     public class Instrument : IEntity
     {
-        public string Id { get; set; }
+        public Instrument()
+        {
+            Teachers = new HashSet<Teacher>();
+        }
+        public int Id { get; set; }
         public string Name { get; set; }
+
+        public virtual ICollection<Teacher> Teachers { get; set; }
+
+        public ICollection<Schedule> Schedules { get; set; }
     }
 }
