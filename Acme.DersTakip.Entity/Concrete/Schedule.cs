@@ -9,14 +9,14 @@ namespace Acme.DersTakip.Entity.Concrete
 {
     public class Schedule : IEntity
     {
-        public int ScheduleId { get; set; }
+        public int Id { get; set; }
         public int TeacherId { get; set; }
         public int StudentId { get; set; }
         public int InstrumentId { get; set; }
         public DateTime ScheduleDateTime { get; set; }
         public decimal Fee { get; set; }
-        public string ScheduleDescription { get; set; }
-        public bool ScheduleStatus { get; set; }
+        public string Description { get; set; }
+        public bool Status { get; set; }
 
     }
 }

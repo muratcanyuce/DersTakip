@@ -7,12 +7,12 @@ using Acme.DersTakip.Entity.Abstract;
 
 namespace Acme.DersTakip.Entity.Concrete
 {
-    public class Teacher :IEntity
+    public class Teacher : IEntity
     {
-        public int TeacherId { get; set; }
-        public string TeacherName { get; set; }
-        public string TeacherSurname { get; set; }
-        public string TeacherPhone { get; set; }
-        public string TeacherEmail { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 }

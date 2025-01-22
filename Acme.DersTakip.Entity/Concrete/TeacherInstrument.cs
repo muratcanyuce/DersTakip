@@ -7,7 +7,7 @@ using Acme.DersTakip.Entity.Abstract;
 
 namespace Acme.DersTakip.Entity.Concrete
 {
-    public class TeacherInstrument :IEntity
+    public class TeacherInstrument : IEntity
     {
         public int TeacherId { get; set; }
         public int InstrumentId { get; set; }

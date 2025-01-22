@@ -7,9 +7,9 @@ using Acme.DersTakip.Entity.Abstract;
 
 namespace Acme.DersTakip.Entity.Concrete
 {
-    public class Instrument:IEntity
+    public class Instrument : IEntity
     {
-        public string EnstrumanId { get; set; }
-        public string EnstrumanAd { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }
