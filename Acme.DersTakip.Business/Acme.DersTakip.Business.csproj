@@ -41,7 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ITeacherService.cs" />
+    <Compile Include="Concrete\TeacherManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Acme.DersTakip.DataAccess\Acme.DersTakip.DataAccess.csproj">
+      <Project>{1a5953dd-0485-4cb3-9af0-4b17feb09932}</Project>
+      <Name>Acme.DersTakip.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Acme.DersTakip.Entity\Acme.DersTakip.Entity.csproj">
+      <Project>{7F1B0FDD-76FB-4823-B5C3-84CF48D6B7CE}</Project>
+      <Name>Acme.DersTakip.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
