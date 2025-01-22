@@ -10,5 +10,7 @@ namespace Acme.DersTakip.Business.Abstract
     public interface ITeacherService
     {
         void Add(Teacher teacher);
+
+        List<Teacher> GetAll();
     }
 }

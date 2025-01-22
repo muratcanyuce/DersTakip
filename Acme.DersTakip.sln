@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.DersTakip.WinUI", "Acme.DersTakip.WinUI\Acme.DersTakip.WinUI.csproj", "{DC34AD37-A3FE-489B-82AB-78ADEAE8EE81}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.DersTakip.Entity", "Acme.DersTakip.Entity\Acme.DersTakip.Entity.csproj", "{7F1B0FDD-76FB-4823-B5C3-84CF48D6B7CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.DersTakip.DataAccess", "Acme.DersTakip.DataAccess\Acme.DersTakip.DataAccess.csproj", "{1A5953DD-0485-4CB3-9AF0-4B17FEB09932}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{12044F39-ABF5-4672-AA71-2BA3A991A1D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.DersTakip.Business.Test", "Acme.DersTakip.Business.Test\Acme.DersTakip.Business.Test.csproj", "{2AA0B125-CAFC-4AE3-BBF4-D8FA81815C0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +37,15 @@ Global
 		{1A5953DD-0485-4CB3-9AF0-4B17FEB09932}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A5953DD-0485-4CB3-9AF0-4B17FEB09932}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A5953DD-0485-4CB3-9AF0-4B17FEB09932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA0B125-CAFC-4AE3-BBF4-D8FA81815C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA0B125-CAFC-4AE3-BBF4-D8FA81815C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA0B125-CAFC-4AE3-BBF4-D8FA81815C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA0B125-CAFC-4AE3-BBF4-D8FA81815C0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2AA0B125-CAFC-4AE3-BBF4-D8FA81815C0A} = {12044F39-ABF5-4672-AA71-2BA3A991A1D5}
 	EndGlobalSection
 EndGlobal

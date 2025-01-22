@@ -23,5 +23,10 @@ namespace Acme.DersTakip.Business.Concrete
             _teacherDal.Add(teacher);
 
         }
+
+        public List<Teacher> GetAll()
+        {
+            return _teacherDal.GetAll();
+        }
     }
 }
