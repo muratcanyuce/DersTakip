@@ -10,6 +10,8 @@ namespace Acme.DersTakip.Business.Abstract
     public interface IInstrumentService
     {
         void Add(Instrument instrument);
+        void Update(Instrument instrument);
+        void Delete(Instrument instrument);
 
         List<Instrument> GetAll();
     }

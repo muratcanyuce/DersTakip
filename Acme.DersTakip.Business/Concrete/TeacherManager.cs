@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Acme.DersTakip.Business.Abstract;
 using Acme.DersTakip.DataAccess.Abstract;
+using Acme.DersTakip.DataAccess.Concrete.EntityFramework;
 using Acme.DersTakip.Entity.Concrete;
 
 namespace Acme.DersTakip.Business.Concrete
@@ -13,9 +15,9 @@ namespace Acme.DersTakip.Business.Concrete
     {
         private ITeacherDal _teacherDal;
 
-        public TeacherManager(ITeacherDal teacherDal)
+        public TeacherManager()
         {
-            _teacherDal = teacherDal;
+            _teacherDal = new EfTeacherDal();
         }
 
         public void Add(Teacher teacher)
@@ -24,9 +26,34 @@ namespace Acme.DersTakip.Business.Concrete
 
         }
 
+        public void Delete(Teacher teacher)
+        {
+            _teacherDal.Delete(teacher);
+        }
+
+        public Teacher Get(Expression<Func<Teacher, bool>> filter)
+        {
+            return _teacherDal.Get(filter);
+        }
+
         public List<Teacher> GetAll()
         {
             return _teacherDal.GetAll();
+        }
+
+        public List<Teacher> GetTeachersWithInstruments()
+        {
+            return _teacherDal.GetTeachersWithInstruments();
+        }
+
+        public void Update(Teacher teacher)
+        {
+            _teacherDal.Update(teacher);
+        }
+
+        public void UpdateTeacherInstruments(int teacherId, int instrumentId)
+        {
+            _teacherDal.UpdateTeacherInstruments(teacherId, instrumentId);
         }
     }
 }

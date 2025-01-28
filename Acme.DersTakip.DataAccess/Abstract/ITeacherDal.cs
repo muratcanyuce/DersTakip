@@ -9,5 +9,7 @@ namespace Acme.DersTakip.DataAccess.Abstract
 {
     public interface ITeacherDal : IEntityRepository<Teacher>
     {
+        List<Teacher> GetTeachersWithInstruments();
+        void UpdateTeacherInstruments(int teacheId, int instrumentId);
     }
 }

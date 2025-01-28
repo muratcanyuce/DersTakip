@@ -13,7 +13,7 @@ namespace Acme.DersTakip.DataAccess.Concrete.EntityFramework
     {
         public DersTakipContext() : base("DersTakip")
         {
-                
+            Configuration.LazyLoadingEnabled = false;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

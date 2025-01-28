@@ -9,7 +9,7 @@ namespace Acme.DersTakip.Entity.Concrete
 {
     public class Schedule : IEntity
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
         public int StudentId { get; set; }

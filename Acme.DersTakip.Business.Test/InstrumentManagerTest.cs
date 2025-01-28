@@ -15,7 +15,7 @@ namespace Acme.DersTakip.Business.Test
         [TestInitialize]
         public void TestInit()
         {
-            _instrumentManager = new InstrumentManager(new EfInstrumentDal());
+            _instrumentManager = new InstrumentManager();
         }
 
         [TestMethod]

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Acme.DersTakip.WinUI
 {
-    public partial class Form1 : Form
+    public partial class ScheduleNewForm : Form
     {
-        public Form1()
+        public ScheduleNewForm()
         {
             InitializeComponent();
         }

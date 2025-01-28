@@ -10,5 +10,25 @@ namespace Acme.DersTakip.DataAccess.Concrete.EntityFramework
 {
     public class EfTeacherDal : EfEntityRepositoryBase<Teacher, DersTakipContext>, ITeacherDal
     {
+        public void UpdateTeacherInstruments(int teacherId, int instrumentId)
+        {
+            using (DersTakipContext context = new DersTakipContext())
+            {
+                var teacher = context.Teachers.Find(teacherId);
+                var instrument = context.Instruments.Find(instrumentId);
+                teacher.Instruments.Add(instrument);
+                //context.Teachers.Attach(teacher);
+
+                context.SaveChanges();
+            }
+        }
+
+        List<Teacher> ITeacherDal.GetTeachersWithInstruments()
+        {
+            using (DersTakipContext context = new DersTakipContext())
+            {
+                return context.Teachers.Include("Instruments").ToList();
+            }
+        }
     }
 }

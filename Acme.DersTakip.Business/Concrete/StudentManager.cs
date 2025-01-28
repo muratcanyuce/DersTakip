@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Acme.DersTakip.Business.Abstract;
 using Acme.DersTakip.DataAccess.Abstract;
+using Acme.DersTakip.DataAccess.Concrete.EntityFramework;
 using Acme.DersTakip.Entity.Concrete;
 
 namespace Acme.DersTakip.Business.Concrete
@@ -13,9 +16,9 @@ namespace Acme.DersTakip.Business.Concrete
     {
         private IStudentDal _studentDal;
 
-        public StudentManager(IStudentDal studentDal)
+        public StudentManager()
         {
-            _studentDal = studentDal;
+            _studentDal = new EfStudentDal();
         }
 
         public void Add(Student student)
@@ -23,10 +26,28 @@ namespace Acme.DersTakip.Business.Concrete
             _studentDal.Add(student);
 
         }
+        public void Update(Student student)
+        {
+            _studentDal.Update(student);
+        }
+        public void Delete(Student student)
+        {
+            _studentDal.Delete(student);
+        }
 
         public List<Student> GetAll()
         {
             return _studentDal.GetAll();
+        }
+        public List<Student> GetStudentInfo(string text)
+        {
+            return _studentDal.GetAll(
+            s => s.Name.ToLower().Contains(text.ToLower()) &
+                 s.Surname.ToLower().Contains(text.ToLower()) &
+                 s.Phone.ToLower().Contains(text.ToLower()) &
+                 s.ParentName.ToLower().Contains(text.ToLower()) &
+                 s.ParentSurname.ToLower().Contains(text.ToLower()) &
+                 s.ParentPhone.ToLower().Contains(text.ToLower()));
         }
     }
 }
