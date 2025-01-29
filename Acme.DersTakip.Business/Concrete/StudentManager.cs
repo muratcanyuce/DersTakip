@@ -39,15 +39,5 @@ namespace Acme.DersTakip.Business.Concrete
         {
             return _studentDal.GetAll();
         }
-        public List<Student> GetStudentInfo(string text)
-        {
-            return _studentDal.GetAll(
-            s => s.Name.ToLower().Contains(text.ToLower()) &
-                 s.Surname.ToLower().Contains(text.ToLower()) &
-                 s.Phone.ToLower().Contains(text.ToLower()) &
-                 s.ParentName.ToLower().Contains(text.ToLower()) &
-                 s.ParentSurname.ToLower().Contains(text.ToLower()) &
-                 s.ParentPhone.ToLower().Contains(text.ToLower()));
-        }
     }
 }

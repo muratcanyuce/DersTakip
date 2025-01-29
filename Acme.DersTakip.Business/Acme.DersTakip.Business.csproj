@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IInstrumentService.cs" />
+    <Compile Include="Abstract\IScheduleService.cs" />
     <Compile Include="Abstract\IStudentService.cs" />
     <Compile Include="Abstract\ITeacherService.cs" />
     <Compile Include="Concrete\InstrumentManager.cs" />
+    <Compile Include="Concrete\ScheduleManager.cs" />
     <Compile Include="Concrete\StudentManager.cs" />
     <Compile Include="Concrete\TeacherManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

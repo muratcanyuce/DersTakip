@@ -18,7 +18,7 @@ namespace Acme.DersTakip.Entity.Concrete
         public string Surname { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<Instrument> Instruments { get; set; }
     }
 }

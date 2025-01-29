@@ -10,5 +10,12 @@ namespace Acme.DersTakip.DataAccess.Concrete.EntityFramework
 {
     public class EfScheduleDal : EfEntityRepositoryBase<Schedule, DersTakipContext>, IScheduleDal
     {
+        public List<Schedule> GetSchedulesFull()
+        {
+            using (DersTakipContext context = new DersTakipContext())
+            {
+                return context.Schedules.Include("Teacher").Include("Student").Include("Instrument").ToList();
+            }
+        }
     }
 }

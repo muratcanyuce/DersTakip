@@ -17,13 +17,11 @@ namespace Acme.DersTakip.DataAccess.Concrete.EntityFramework
                 var teacher = context.Teachers.Find(teacherId);
                 var instrument = context.Instruments.Find(instrumentId);
                 teacher.Instruments.Add(instrument);
-                //context.Teachers.Attach(teacher);
-
                 context.SaveChanges();
             }
         }
 
-        List<Teacher> ITeacherDal.GetTeachersWithInstruments()
+        public List<Teacher> GetTeachersWithInstruments()
         {
             using (DersTakipContext context = new DersTakipContext())
             {

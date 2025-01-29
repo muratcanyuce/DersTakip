@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\ScheduleDto.cs" />
     <Compile Include="ScheduleAppearanceForm.cs">
       <SubType>Form</SubType>
     </Compile>

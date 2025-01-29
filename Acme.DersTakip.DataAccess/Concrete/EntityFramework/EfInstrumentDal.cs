@@ -10,6 +10,5 @@ namespace Acme.DersTakip.DataAccess.Concrete.EntityFramework
 {
     public class EfInstrumentDal :EfEntityRepositoryBase <Instrument, DersTakipContext>, IInstrumentDal
     {
-
     }
 }
