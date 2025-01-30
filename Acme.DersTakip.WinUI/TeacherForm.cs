@@ -77,7 +77,7 @@ namespace Acme.DersTakip.WinUI
 
         private void dgwTeachers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var id = Convert.ToInt32(dgwTeachers.CurrentRow.Cells[0].Value);
+            var id = Convert.ToInt32(dgwTeachers.CurrentRow.Cells["Id"].Value);
             var teacher = _teachers.FirstOrDefault(p => p.Id == id);
             tbxTeacherName.Text = teacher.Name;
             tbxTeacherSurname.Text = teacher.Surname;

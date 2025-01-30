@@ -17,7 +17,7 @@ namespace Acme.DersTakip.Business.Test
         [TestInitialize]
         public void TestInit()
         {
-            _teacherManager = new TeacherManager(new EfTeacherDal());
+            _teacherManager = new TeacherManager();
         }
 
         [TestMethod]

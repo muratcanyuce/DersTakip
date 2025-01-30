@@ -20,5 +20,6 @@ namespace Acme.DersTakip.Entity.Concrete
         public decimal Fee { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }
+        public int Duration { get; set; }
     }
 }

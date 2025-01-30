@@ -17,18 +17,16 @@ namespace Acme.DersTakip.WinUI
     {
         private TeacherManager _teacherManager;
         private StudentManager _studentManager;
-        private InstrumentManager _instrumentManager;
         private ScheduleManager _scheduleManager;
         private List<Schedule> _schedules;
         private List<Teacher> _teachers;
         private List<Student> _students;
-        private List<Instrument> _instruments;
+      
 
         public ScheduleNewForm()
         {
             InitializeComponent();
             _teacherManager = new TeacherManager();
-            _instrumentManager = new InstrumentManager();
             _studentManager = new StudentManager();
             _scheduleManager = new ScheduleManager();
         }
@@ -37,19 +35,19 @@ namespace Acme.DersTakip.WinUI
         {
             _teachers = _teacherManager.GetTeachersWithInstruments();
             cbxTeacherSchedule.DataSource = _teachers;
-            cbxTeacherSchedule.DisplayMember = "Name";
+            cbxTeacherSchedule.DisplayMember = "FullName";
             _students = _studentManager.GetAll();
             cbxStudentSchedule.DataSource = _students;
-            cbxStudentSchedule.DisplayMember = "Name";
+            cbxStudentSchedule.DisplayMember = "FullName";
             LoadSchedules();
             dtpDateTime.Format = DateTimePickerFormat.Custom;
-            dtpDateTime.CustomFormat = "dd.MM.yyyy hh:mm:ss";
+            dtpDateTime.CustomFormat = "dd.MM.yyyy HH:mm:ss";
         }
         private void LoadSchedules()
         {
             var schedules = new List<ScheduleDto>();
             _schedules = _scheduleManager.GetSchedulesFull();
-            foreach (var schedule in _schedules) 
+            foreach (var schedule in _schedules)
             {
                 schedules.Add(new ScheduleDto
                 {
@@ -57,13 +55,14 @@ namespace Acme.DersTakip.WinUI
                     TeacherId = schedule.TeacherId,
                     StudentId = schedule.StudentId,
                     InstrumentId = schedule.InstrumentId,
-                    TeacherName = schedule.Teacher.Name,
-                    StudentName = schedule.Student.Name,
+                    TeacherName = string.Join(" ", schedule.Teacher.Name, schedule.Teacher.Surname),
+                    StudentName = String.Join(" ", schedule.Student.Name, schedule.Student.Surname),
                     InstrumentName = schedule.Instrument.Name,
                     ScheduleDateTime = schedule.ScheduleDateTime,
                     Fee = schedule.Fee,
                     Description = schedule.Description,
-                    Status = schedule.Status
+                    Status = schedule.Status,
+                    Duration = schedule.Duration
                 });
             }
             dgwScheduleNew.DataSource = schedules;
@@ -75,7 +74,13 @@ namespace Acme.DersTakip.WinUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _scheduleManager.Update(new Schedule
+            if (dtpDateTime.Value > DateTime.Now && chkStatusSchedule.Checked)
+            {
+                MessageBox.Show("Gelecek Tarihli Takvim Güncellenemez !");
+                return;
+            }
+
+            var schedule = new Schedule
             {
                 Id = Convert.ToInt32(dgwScheduleNew.CurrentRow.Cells["Id"].Value),
                 TeacherId = ((Teacher)cbxTeacherSchedule.SelectedValue).Id,
@@ -85,9 +90,12 @@ namespace Acme.DersTakip.WinUI
                 Fee = Convert.ToDecimal(tbxFee.Text),
                 Description = tbxDescription.Text,
                 Status = chkStatusSchedule.Checked,
-            });
+                Duration = Convert.ToInt32(tbxDuration.Text)
+            };
+            _scheduleManager.Update(schedule);
             MessageBox.Show("Takvim Güncellendi !");
             LoadSchedules();
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -96,14 +104,29 @@ namespace Acme.DersTakip.WinUI
             int studentId = ((Student)cbxStudentSchedule.SelectedValue).Id;
             int instrumentId = ((Instrument)cbxInstrumentSchedule.SelectedValue).Id;
 
-            _scheduleManager.Add(new Schedule
+            if (tbxFee.Text == "" || tbxDuration.Text == "")
+            {
+                MessageBox.Show("Lütfen Tüm Alanları Doldurunuz !");
+                return;
+            }
+            bool isNumber = int.TryParse(tbxFee.Text, out int fee);
+            
+            if (!isNumber)
+            {
+                MessageBox.Show("Ücret Alanına Sadece Sayı Girilebilir !");
+                return;
+            }
+
+                _scheduleManager.Add(new Schedule
             {
                 TeacherId = teacherId,
                 StudentId = studentId,
                 InstrumentId = instrumentId,
                 ScheduleDateTime = dtpDateTime.Value,
                 Description = tbxDescription.Text,
-                Fee = Convert.ToDecimal(tbxFee.Text)
+                Fee = Convert.ToDecimal(tbxFee.Text),
+                Status = chkStatusSchedule.Checked,
+                Duration = Convert.ToInt32(tbxDuration.Text)
             });
             MessageBox.Show("Takvim Eklendi !");
             LoadSchedules();
@@ -121,17 +144,17 @@ namespace Acme.DersTakip.WinUI
 
         private void dgwScheduleNew_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var row = dgwScheduleNew.CurrentRow;
             Teacher teacher = _teachers.FirstOrDefault(x => x.Id == Convert.ToInt32(dgwScheduleNew.CurrentRow.Cells["TeacherId"].Value));
-            cbxTeacherSchedule.SelectedIndex = cbxTeacherSchedule.FindStringExact(teacher.Name);
+            cbxTeacherSchedule.SelectedIndex = cbxTeacherSchedule.FindStringExact(teacher.FullName);
             Student student = _students.FirstOrDefault(x => x.Id == Convert.ToInt32(dgwScheduleNew.CurrentRow.Cells["StudentId"].Value));
-            cbxStudentSchedule.SelectedIndex = cbxStudentSchedule.FindStringExact(student.Name);
+            cbxStudentSchedule.SelectedIndex = cbxStudentSchedule.FindStringExact(student.FullName);
             Instrument instrument = teacher.Instruments.FirstOrDefault(x => x.Id == Convert.ToInt32(dgwScheduleNew.CurrentRow.Cells["InstrumentId"].Value));
             cbxInstrumentSchedule.SelectedIndex = cbxInstrumentSchedule.FindStringExact(instrument.Name);
             dtpDateTime.Value = Convert.ToDateTime(dgwScheduleNew.CurrentRow.Cells["ScheduleDateTime"].Value);
             tbxFee.Text = dgwScheduleNew.CurrentRow.Cells["Fee"].Value.ToString();
             tbxDescription.Text = dgwScheduleNew.CurrentRow.Cells["Description"].Value.ToString();
             chkStatusSchedule.Checked = Convert.ToBoolean(dgwScheduleNew.CurrentRow.Cells["Status"].Value);
+            tbxDuration.Text = dgwScheduleNew.CurrentRow.Cells["Duration"].Value.ToString();
         }
 
         private void cbxTeacherSchedule_SelectedIndexChanged(object sender, EventArgs e)

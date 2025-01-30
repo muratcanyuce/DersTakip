@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,15 @@ namespace Acme.DersTakip.Entity.Concrete
         public Teacher()
         {
             Instruments = new HashSet<Instrument>();
+        }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return Name + " " + Surname;
+            }
         }
         public int Id { get; set; }
         public string Name { get; set; }

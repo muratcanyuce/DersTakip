@@ -47,6 +47,8 @@
             this.cbxStudentSchedule = new System.Windows.Forms.ComboBox();
             this.cbxInstrumentSchedule = new System.Windows.Forms.ComboBox();
             this.cbxTeacherSchedule = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbxDuration = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwScheduleNew)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +66,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbxDuration);
             this.groupBox1.Controls.Add(this.tbxFee);
             this.groupBox1.Controls.Add(this.tbxDescription);
             this.groupBox1.Controls.Add(this.dtpDateTime);
@@ -71,6 +74,7 @@
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label5);
@@ -97,7 +101,7 @@
             // 
             // tbxDescription
             // 
-            this.tbxDescription.Location = new System.Drawing.Point(157, 166);
+            this.tbxDescription.Location = new System.Drawing.Point(157, 195);
             this.tbxDescription.Name = "tbxDescription";
             this.tbxDescription.Size = new System.Drawing.Size(213, 22);
             this.tbxDescription.TabIndex = 6;
@@ -112,7 +116,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(243, 223);
+            this.btnDelete.Location = new System.Drawing.Point(243, 251);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 33);
             this.btnDelete.TabIndex = 4;
@@ -122,7 +126,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(162, 223);
+            this.btnUpdate.Location = new System.Drawing.Point(162, 251);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 33);
             this.btnUpdate.TabIndex = 4;
@@ -132,7 +136,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(76, 223);
+            this.btnAdd.Location = new System.Drawing.Point(76, 251);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 33);
             this.btnAdd.TabIndex = 4;
@@ -161,7 +165,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 195);
+            this.label2.Location = new System.Drawing.Point(24, 223);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 16);
             this.label2.TabIndex = 3;
@@ -170,7 +174,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 170);
+            this.label5.Location = new System.Drawing.Point(24, 198);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 16);
             this.label5.TabIndex = 3;
@@ -206,7 +210,7 @@
             // chkStatusSchedule
             // 
             this.chkStatusSchedule.AutoSize = true;
-            this.chkStatusSchedule.Location = new System.Drawing.Point(263, 194);
+            this.chkStatusSchedule.Location = new System.Drawing.Point(263, 222);
             this.chkStatusSchedule.Name = "chkStatusSchedule";
             this.chkStatusSchedule.Size = new System.Drawing.Size(18, 17);
             this.chkStatusSchedule.TabIndex = 2;
@@ -236,6 +240,22 @@
             this.cbxTeacherSchedule.Size = new System.Drawing.Size(213, 24);
             this.cbxTeacherSchedule.TabIndex = 0;
             this.cbxTeacherSchedule.SelectedIndexChanged += new System.EventHandler(this.cbxTeacherSchedule_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 171);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 16);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Saatlik Ders Süresi";
+            // 
+            // tbxDuration
+            // 
+            this.tbxDuration.Location = new System.Drawing.Point(157, 167);
+            this.tbxDuration.Name = "tbxDuration";
+            this.tbxDuration.Size = new System.Drawing.Size(213, 22);
+            this.tbxDuration.TabIndex = 6;
             // 
             // ScheduleNewForm
             // 
@@ -275,5 +295,7 @@
         private System.Windows.Forms.TextBox tbxDescription;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbxDuration;
+        private System.Windows.Forms.Label label7;
     }
 }
