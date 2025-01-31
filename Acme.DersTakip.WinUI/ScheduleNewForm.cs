@@ -21,6 +21,7 @@ namespace Acme.DersTakip.WinUI
         private List<Schedule> _schedules;
         private List<Teacher> _teachers;
         private List<Student> _students;
+        //TODO: Schedule validasyonları yapılacak.
       
 
         public ScheduleNewForm()

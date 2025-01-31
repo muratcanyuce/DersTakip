@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Acme.DersTakip.Business.Abstract;
+using Acme.DersTakip.Business.Utilities;
+using Acme.DersTakip.Business.validationrules.FluentValidation;
 using Acme.DersTakip.DataAccess.Abstract;
 using Acme.DersTakip.DataAccess.Concrete.EntityFramework;
 using Acme.DersTakip.Entity.Concrete;
@@ -22,6 +24,7 @@ namespace Acme.DersTakip.Business.Concrete
 
         public void Add(Teacher teacher)
         {
+            ValidationTool.Validate(new TeacherValidator(), teacher);
             _teacherDal.Add(teacher);
 
         }
@@ -48,6 +51,7 @@ namespace Acme.DersTakip.Business.Concrete
 
         public void Update(Teacher teacher)
         {
+            ValidationTool.Validate(new TeacherValidator(), teacher);
             _teacherDal.Update(teacher);
         }
 

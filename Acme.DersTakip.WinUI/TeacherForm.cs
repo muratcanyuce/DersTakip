@@ -18,6 +18,7 @@ namespace Acme.DersTakip.WinUI
         private TeacherManager _teacherManager;
         private InstrumentManager _instrumentManager;
         private List<Teacher> _teachers;
+        //TODO: Teacher validasyonları yapılacak.
         public TeacherForm()
         {
             InitializeComponent();
@@ -38,24 +39,31 @@ namespace Acme.DersTakip.WinUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _teacherManager.Update(new Teacher
+            try
             {
-                Id = Convert.ToInt32(dgwTeachers.CurrentRow.Cells[0].Value),
-                Name = tbxTeacherName.Text,
-                Surname = tbxTeacherSurname.Text,
-                Phone = tbxTeacherPhone.Text,
-                Email = tbxTeacherEmail.Text
+                _teacherManager.Update(new Teacher
+                {
+                    Id = Convert.ToInt32(dgwTeachers.CurrentRow.Cells["Id"].Value),
+                    Name = tbxTeacherName.Text,
+                    Surname = tbxTeacherSurname.Text,
+                    Phone = tbxTeacherPhone.Text,
+                    Email = tbxTeacherEmail.Text
 
-            });
-            MessageBox.Show("Öğretmen bilgisi güncellendi!");
-            LoadTeachers();
+                });
+                MessageBox.Show("Öğretmen bilgisi güncellendi!");
+                LoadTeachers();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             _teacherManager.Delete(new Teacher
             {
-                Id = Convert.ToInt32(dgwTeachers.CurrentRow.Cells[0].Value)
+                Id = Convert.ToInt32(dgwTeachers.CurrentRow.Cells["Id"].Value)
             });
             MessageBox.Show("Öğretmen bilgisi silindi!");
             LoadTeachers();
@@ -64,15 +72,22 @@ namespace Acme.DersTakip.WinUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            _teacherManager.Add(new Teacher
+            try
             {
-                Name = tbxTeacherName.Text,
-                Surname = tbxTeacherSurname.Text,
-                Phone = tbxTeacherPhone.Text,
-                Email = tbxTeacherEmail.Text
-            });
-            MessageBox.Show("Öğretmen bilgisi eklendi!");
-            LoadTeachers();
+                _teacherManager.Add(new Teacher
+                {
+                    Name = tbxTeacherName.Text,
+                    Surname = tbxTeacherSurname.Text,
+                    Phone = tbxTeacherPhone.Text,
+                    Email = tbxTeacherEmail.Text
+                });
+                MessageBox.Show("Öğretmen bilgisi eklendi!");
+                LoadTeachers();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void dgwTeachers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -88,12 +103,12 @@ namespace Acme.DersTakip.WinUI
 
         private void btnAddTeachersInstrument_Click(object sender, EventArgs e)
         {
-            var teacherId = Convert.ToInt32(dgwTeachers.CurrentRow.Cells[0].Value);
+            var teacherId = Convert.ToInt32(dgwTeachers.CurrentRow.Cells["Id"].Value);
             var teacher = _teacherManager.Get(x => x.Id == teacherId);
             var selectedInstrument = (Instrument)cbxTeachersInstrument.SelectedItem;
-                teacher.Instruments.Add(selectedInstrument);
-                _teacherManager.UpdateTeacherInstruments(teacherId, selectedInstrument.Id);
-                LoadTeachers();
+            teacher.Instruments.Add(selectedInstrument);
+            _teacherManager.UpdateTeacherInstruments(teacherId, selectedInstrument.Id);
+            LoadTeachers();
         }
     }
 }

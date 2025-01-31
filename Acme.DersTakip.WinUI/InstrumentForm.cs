@@ -16,6 +16,7 @@ namespace Acme.DersTakip.WinUI
     public partial class InstrumentForm : Form
     {
         private InstrumentManager _instrumentManager;
+        //TODO: Instrument aynı isim eklenmeyecek. validasyonları yapılacak.
         public InstrumentForm()
         {
             InitializeComponent();
