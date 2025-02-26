@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Acme.DersTakip.Business.Concrete;
+using Acme.DersTakip.Business.DependencyResolvers.Ninject;
 using Acme.DersTakip.Entity.Concrete;
 
 namespace Acme.DersTakip.WinUI
@@ -15,11 +16,11 @@ namespace Acme.DersTakip.WinUI
     public partial class StudentForm : Form
     {
         private StudentManager _studentManager;
-        //TODO: Student validasyonları yapılacak.
+
         public StudentForm()
         {
             InitializeComponent();
-            _studentManager = new StudentManager();
+            _studentManager = InstanceFactory.GetInstance<StudentManager>();
             LoadProducts();
         }
 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Acme.DersTakip.Business.Concrete;
+using Acme.DersTakip.Business.DependencyResolvers.Ninject;
 using Acme.DersTakip.Entity.Concrete;
 
 namespace Acme.DersTakip.WinUI
@@ -16,11 +17,10 @@ namespace Acme.DersTakip.WinUI
     public partial class InstrumentForm : Form
     {
         private InstrumentManager _instrumentManager;
-        //TODO: Instrument aynı isim eklenmeyecek. validasyonları yapılacak.
         public InstrumentForm()
         {
             InitializeComponent();
-            _instrumentManager = new InstrumentManager();
+            _instrumentManager = InstanceFactory.GetInstance<InstrumentManager>();
             LoadProducts();
         }
         private void LoadProducts()

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Acme.DersTakip.Business.Concrete;
+using Acme.DersTakip.Business.DependencyResolvers.Ninject;
 using Acme.DersTakip.Entity.Concrete;
 
 namespace Acme.DersTakip.WinUI
@@ -18,12 +19,11 @@ namespace Acme.DersTakip.WinUI
         private TeacherManager _teacherManager;
         private InstrumentManager _instrumentManager;
         private List<Teacher> _teachers;
-        //TODO: Teacher validasyonları yapılacak.
         public TeacherForm()
         {
             InitializeComponent();
-            _teacherManager = new TeacherManager();
-            _instrumentManager = new InstrumentManager();
+            _teacherManager = InstanceFactory.GetInstance<TeacherManager>();
+            _instrumentManager = InstanceFactory.GetInstance<InstrumentManager>();
         }
         private void TeacherForm_Load(object sender, EventArgs e)
         {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Acme.DersTakip.Business.Concrete;
+using Acme.DersTakip.Business.DependencyResolvers.Ninject;
 using Acme.DersTakip.Entity.Concrete;
 using Acme.DersTakip.WinUI.DTOs;
 
@@ -21,15 +22,14 @@ namespace Acme.DersTakip.WinUI
         private List<Schedule> _schedules;
         private List<Teacher> _teachers;
         private List<Student> _students;
-        //TODO: Schedule validasyonları yapılacak.
       
 
         public ScheduleNewForm()
         {
             InitializeComponent();
-            _teacherManager = new TeacherManager();
-            _studentManager = new StudentManager();
-            _scheduleManager = new ScheduleManager();
+            _teacherManager = InstanceFactory.GetInstance<TeacherManager>();
+            _studentManager = InstanceFactory.GetInstance<StudentManager>();
+            _scheduleManager = InstanceFactory.GetInstance<ScheduleManager>();
         }
 
         private void ScheduleNewForm_Load(object sender, EventArgs e)

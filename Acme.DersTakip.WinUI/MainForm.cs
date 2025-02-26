@@ -15,7 +15,6 @@ namespace Acme.DersTakip.WinUI
         public MainForm()
         {
             InitializeComponent();
-
         }
 
         private void studentToolStripMenuItem1_Click(object sender, EventArgs e)
